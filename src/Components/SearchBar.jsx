@@ -53,12 +53,12 @@ const SearchBar = ({ setPicture }) => {
 
 	return (
 		<>
-			<form className='flex gap-4 justify-center'>
+			<form className='flex gap-4 justify-center items-center flex-wrap'>
 				<input
 					type='text'
 					name='search'
 					id='search'
-					className='input input-bordered'
+					className='input input-bordered w-11/12 md:w-64'
 					value={query}
 					onChange={handleSearchChange}
 				/>

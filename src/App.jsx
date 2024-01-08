@@ -10,7 +10,7 @@ const App = () => {
 		<div className='grid place-content-center min-h-screen'>
 			<Header />
 			<SearchBar setPicture={setPicture} />
-			<div className='h-[50vh] flex justify-between items-center mt-8'>
+			<div className='h-[50vh] flex justify-center items-center mt-8'>
 				<img src={picture} alt='' className='h-full rounded-md' />
 			</div>
 		</div>

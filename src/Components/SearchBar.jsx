@@ -1,6 +1,11 @@
 import axios from 'axios'
 import { useState } from 'react'
 
+/**
+ * A function to retrieve a picture.
+ *
+ * @return {Promise<void>} This function does not take any parameters.
+ */
 const SearchBar = ({ setPicture }) => {
 	const [query, setQuery] = useState('')
 	const [loading, setLoading] = useState(false)
@@ -17,14 +22,21 @@ const SearchBar = ({ setPicture }) => {
 		getPicture()
 	}
 
+	/**
+	 * A function to retrieve a picture.
+	 *
+	 * @return {Promise<void>} This function does not take any parameters.
+	 */
 	const getPicture = async () => {
 		setLoading(true)
 
 		try {
+			// Passing body as a x-www-form-urlencoded string
 			let params = new URLSearchParams()
 			params.append('inputs', query)
 			let data = params.toString()
 
+			// Making axios request config
 			let config = {
 				method: 'post',
 				maxBodyLength: Infinity,
@@ -34,13 +46,16 @@ const SearchBar = ({ setPicture }) => {
 					'Content-Type': 'application/x-www-form-urlencoded',
 				},
 				data: data,
+				// API sends us the image as is so we need to make sure our response is a blob
 				responseType: 'blob',
 			}
 
+			// Making axios request
 			const response = await axios.request(config)
+			// Converting blob to URL
 			const url = URL.createObjectURL(response.data)
-
 			setPicture(url)
+
 			setError(false)
 		} catch (error) {
 			setError(true)

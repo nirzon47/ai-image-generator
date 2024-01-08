@@ -1,3 +1,8 @@
+/**
+ * Renders the header component.
+ *
+ * @return {JSX.Element} The rendered header component.
+ */
 const Header = () => {
 	return (
 		<header>
